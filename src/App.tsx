@@ -41,7 +41,7 @@ const App: React.FC = () => {
       <header className="app-header">
         <div className="header-brand">
           <span className="header-icon" aria-hidden="true">📅</span>
-          <h1>Mis Eventos</h1>
+        <h1>Eventos Culturales</h1>
         </div>
         <button className="btn-primary" onClick={openCreate}>
           <span aria-hidden="true">+</span> Nuevo evento
