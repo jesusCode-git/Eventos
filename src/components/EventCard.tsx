@@ -44,6 +44,10 @@ export const EventCard: React.FC<EventCardProps> = ({ event, onEdit, onDelete })
               {event.loc}
             </span>
           )}
+          <span className="meta-item">
+  <span aria-hidden="true">🎟</span>
+  {event.precio === 0 ? 'Gratuito' : `$${event.precio.toFixed(2)}`}
+</span>
         </div>
         {event.desc && <p className="event-desc">{event.desc}</p>}
         <span className={`event-badge badge-${event.cat}`}>

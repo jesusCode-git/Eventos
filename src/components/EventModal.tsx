@@ -9,7 +9,7 @@ interface EventModalProps {
 }
 
 const EMPTY_FORM: FormData = {
-  name: '', date: '', time: '', cat: 'work', loc: '', desc: '',
+  name: '', date: '', time: '', cat: 'concierto', loc: '', desc: '', precio: 0,
 };
 
 export const EventModal: React.FC<EventModalProps> = ({ event, onClose, onSave }) => {
@@ -19,7 +19,7 @@ export const EventModal: React.FC<EventModalProps> = ({ event, onClose, onSave }
 
   useEffect(() => {
     if (event) {
-      setForm({ name: event.name, date: event.date, time: event.time, cat: event.cat, loc: event.loc, desc: event.desc });
+    setForm({ name: event.name, date: event.date, time: event.time, cat: event.cat, loc: event.loc, desc: event.desc, precio: event.precio ?? 0 });
     } else {
       setForm(EMPTY_FORM);
     }
@@ -27,8 +27,8 @@ export const EventModal: React.FC<EventModalProps> = ({ event, onClose, onSave }
     setTimeout(() => nameRef.current?.focus(), 50);
   }, [event]);
 
-  const set = (field: keyof FormData, value: string) =>
-    setForm((prev) => ({ ...prev, [field]: value }));
+const set = (field: keyof FormData, value: string | number) =>
+  setForm((prev) => ({ ...prev, [field]: value }));
 
   const handleSave = () => {
     if (!form.name.trim()) { setError('El nombre es obligatorio.'); return; }
@@ -83,7 +83,18 @@ export const EventModal: React.FC<EventModalProps> = ({ event, onClose, onSave }
           <label htmlFor="f-desc">Descripción</label>
           <textarea id="f-desc" rows={3} value={form.desc} onChange={(e) => set('desc', e.target.value)} placeholder="Detalles del evento..." />
         </div>
-
+      <div className="form-group">
+        <label htmlFor="f-precio">Precio (0 = gratuito) *</label>
+        <input
+          id="f-precio"
+          type="number"
+          min="0"
+          step="0.01"
+          value={form.precio}
+          onChange={(e) => set('precio', parseFloat(e.target.value) || 0)}
+          placeholder="0.00"
+        />
+      </div>
         {error && <p className="form-error">{error}</p>}
 
         <div className="modal-actions">

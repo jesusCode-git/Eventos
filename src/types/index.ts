@@ -4,20 +4,13 @@ export type SortOption = 'date-asc' | 'date-desc' | 'name';
 export interface Event {
   id: number;
   name: string;
-  date: string;       
-  time: string;       
+  date: string;
+  time: string;
   cat: Category;
   loc: string;
   desc: string;
-  createdAt: number;  
-}
-
-export interface Filters {
-  query: string;
-  cat: Category | '';
-  from: string;
-  to: string;
-  sort: SortOption;
+  precio: number; 
+  createdAt: number;
 }
 
 export interface FormData {
@@ -27,4 +20,13 @@ export interface FormData {
   cat: Category;
   loc: string;
   desc: string;
+  precio: number;  
+}
+
+export interface Filters {
+  query: string;
+  cat: Category | '';
+  from: string;
+  to: string;
+  sort: SortOption;
 }

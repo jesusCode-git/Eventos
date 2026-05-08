@@ -3,6 +3,14 @@ import { Event, Filters, FormData, Category } from '../types';
 
 const STORAGE_KEY = 'events-app-data';
 
+const SAMPLE_EVENTS: Event[] = [
+ { id: 1, name: 'Concierto de Coldplay', date: '2026-06-10', time: '20:00',
+  cat: 'concierto', loc: 'Foro Sol', desc: 'World tour 2026', precio: 350.00, createdAt: Date.now() },
+{ id: 2, name: 'Festival Vive Latino', date: '2026-03-15', time: '12:00',
+  cat: 'festival', loc: 'Foro Sol', desc: 'Edición anual', precio: 0, createdAt: Date.now() },
+{ id: 3, name: 'Show de comedia', date: '2026-07-01', time: '21:00',
+  cat: 'show', loc: 'Teatro Metropolitan', desc: 'Stand-up', precio: 150.00, createdAt: Date.now() },
+];
 
 
 function loadFromStorage(): Event[] {
@@ -104,11 +112,3 @@ export const CATEGORY_OPTIONS = [
   { value: 'otro',       label: 'Otro' },
 ];
 
-const SAMPLE_EVENTS: Event[] = [
-  { id: 1, name: 'Concierto de Coldplay', date: '2026-06-10', time: '20:00',
-    cat: 'concierto', loc: 'Foro Sol', desc: 'World tour 2026', createdAt: Date.now() },
-  { id: 2, name: 'Festival Vive Latino', date: '2026-03-15', time: '12:00',
-    cat: 'festival', loc: 'Foro Sol', desc: 'Edición anual', createdAt: Date.now() },
-  { id: 3, name: 'Show de comedia', date: '2026-07-01', time: '21:00',
-    cat: 'show', loc: 'Teatro Metropolitan', desc: 'Stand-up', createdAt: Date.now() },
-];
