@@ -3,28 +3,7 @@ import { Event, Filters, FormData, Category } from '../types';
 
 const STORAGE_KEY = 'events-app-data';
 
-const SAMPLE_EVENTS: Event[] = [
-  {
-    id: 1, name: 'Reunión de diseño de islas', date: '2026-05-08', time: '10:00',
-    cat: 'work', loc: 'Sala Einstein', desc: 'Revisión de prototipos', createdAt: Date.now(),
-  },
-  {
-    id: 2, name: 'Cita con ginecologo Juan Vera', date: '2026-05-12', time: '09:30',
-    cat: 'health', loc: 'Hospital Angeles', desc: 'Revisión diaria', createdAt: Date.now(),
-  },
-  {
-    id: 3, name: 'Cumpleaños de Virus', date: '2026-05-15', time: '19:00',
-    cat: 'social', loc: 'Restaurante El 67', desc: 'Celebración con gays', createdAt: Date.now(),
-  },
-  {
-    id: 4, name: 'Sprint planning', date: '2026-05-20', time: '11:00',
-    cat: 'work', loc: 'Zoom', desc: 'Planificación del sprint 1400', createdAt: Date.now(),
-  },
-  {
-    id: 5, name: 'Yoga matutino', date: '2026-05-22', time: '07:00',
-    cat: 'health', loc: 'Parque de la petro', desc: 'Sesión semAnal', createdAt: Date.now(),
-  },
-];
+
 
 function loadFromStorage(): Event[] {
   try {
@@ -107,19 +86,29 @@ export function getStats(events: Event[]) {
     upcoming: events.filter((e) => e.date >= today).length,
   };
 }
-
 export const CATEGORY_LABELS: Record<string, string> = {
-  work: 'Trabajo',
-  personal: 'Personal',
-  social: 'Social',
-  health: 'Salud',
-  otro: 'Otro',
+  concierto:  'Concierto',
+  festival:   'Festival',
+  show:       'Show en vivo',
+  teatro:     'Teatro',
+  exposicion: 'Exposición',
+  otro:       'Otro',
 };
 
-export const CATEGORY_OPTIONS: Array<{ value: Category; label: string }> = [
-  { value: 'work', label: 'Trabajo' },
-  { value: 'personal', label: 'Personal' },
-  { value: 'social', label: 'Social' },
-  { value: 'health', label: 'Salud' },
-  { value: 'otro', label: 'Otro' },
+export const CATEGORY_OPTIONS = [
+  { value: 'concierto',  label: 'Concierto' },
+  { value: 'festival',   label: 'Festival' },
+  { value: 'show',       label: 'Show en vivo' },
+  { value: 'teatro',     label: 'Teatro' },
+  { value: 'exposicion', label: 'Exposición' },
+  { value: 'otro',       label: 'Otro' },
+];
+
+const SAMPLE_EVENTS: Event[] = [
+  { id: 1, name: 'Concierto de Coldplay', date: '2026-06-10', time: '20:00',
+    cat: 'concierto', loc: 'Foro Sol', desc: 'World tour 2026', createdAt: Date.now() },
+  { id: 2, name: 'Festival Vive Latino', date: '2026-03-15', time: '12:00',
+    cat: 'festival', loc: 'Foro Sol', desc: 'Edición anual', createdAt: Date.now() },
+  { id: 3, name: 'Show de comedia', date: '2026-07-01', time: '21:00',
+    cat: 'show', loc: 'Teatro Metropolitan', desc: 'Stand-up', createdAt: Date.now() },
 ];

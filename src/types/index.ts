@@ -1,4 +1,4 @@
-export type Category = 'work' | 'personal' | 'social' | 'health' | 'otro';
+export type Category = 'concierto' | 'festival' | 'show' | 'teatro' | 'exposicion' | 'otro';
 export type SortOption = 'date-asc' | 'date-desc' | 'name';
 
 export interface Event {
